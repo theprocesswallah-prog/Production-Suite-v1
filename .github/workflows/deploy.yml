@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy to gh-pages
 
 on:
   push:
@@ -6,19 +6,11 @@ on:
       - main
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+  contents: write # gh-pages branch create aur write karne ke liye permission zaroori hai
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source Code
@@ -28,22 +20,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Yahan se humne caching hata di hai kyunki lock file missing hai
 
       - name: Install dependencies
-        run: npm install # 'npm ci' ke badle 'npm install' use kiya hai jo bina lock file ke chalega
+        run: npm install
 
       - name: Build Application
         run: npm run build
 
-      - name: Setup Pages Configuration
-        uses: actions/configure-pages@v4
-
-      - name: Upload Build Artifacts
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: './dist'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          folder: dist # Vite output folder
+          branch: gh-pages # Nayi branch jisme compiled files jayengi
