@@ -28,10 +28,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          # Yahan se humne caching hata di hai kyunki lock file missing hai
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install # 'npm ci' ke badle 'npm install' use kiya hai jo bina lock file ke chalega
 
       - name: Build Application
         run: npm run build
