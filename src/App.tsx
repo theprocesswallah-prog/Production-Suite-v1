@@ -2,21 +2,17 @@ import { useState, useEffect } from 'react';
 import { 
   Views 
 } from './components/Views';
-import { useState, useEffect } from 'react';
-import { 
-  Views 
-} from './components/Views';
 import { 
   LayoutDashboard, ShoppingBag, Calendar, FileText, Layers, Cpu, 
   Coins, Hammer, Wrench, CheckSquare, PackageCheck, Truck, 
   BarChart3, Database, Settings, RefreshCw, X, Shield, Layers2,
   ChevronRight
 } from 'lucide-react';
+
 export default function App() {
   const [currentView, setCurrentView] = useState('dashboard');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Auto disappear toast logic
   useEffect(() => {
     if (toastMessage) {
       const timer = setTimeout(() => {
@@ -30,7 +26,6 @@ export default function App() {
     setToastMessage(message);
   };
 
-  // Human-readable breadcrumbs mapping corresponding structure
   const getBreadcrumbs = () => {
     switch (currentView) {
       case 'dashboard': return ['Dashboard'];
@@ -52,7 +47,6 @@ export default function App() {
     }
   };
 
-  // Human-readable detailed page title mapping
   const getPageTitle = () => {
     switch (currentView) {
       case 'dashboard': return 'Factory Overview Dashboard';
@@ -76,19 +70,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex bg-slate-50 text-slate-900 font-sans">
-      {/* 1. Dark Industrial Sidebar */}
       <aside className="w-64 bg-slate-950 text-slate-300 flex flex-col border-r border-slate-900 shrink-0">
         <div className="p-4 border-b border-slate-900 bg-slate-950 flex items-center gap-2">
           <Layers2 className="h-6 w-6 text-indigo-500" />
           <div>
             <h1 className="text-sm font-extrabold tracking-wider text-white">PROCESSWALLAH</h1>
-            <p className="text-[10px] text-slate-400 font-medium uppercase tracking-widest">HT Mfg Suite v1</p>
+            <p className="text-[10px] text-slate-400 font-medium uppercase tracking-widest">HT mfg suite v1</p>
           </div>
         </div>
 
-        {/* Scrollable Navigation Area */}
         <nav className="flex-1 overflow-y-auto p-3 space-y-4">
-          {/* Main Top-Level Route */}
           <div>
             <ul className="space-y-1">
               <li>
@@ -107,7 +98,6 @@ export default function App() {
             </ul>
           </div>
 
-          {/* Section: Sales */}
           <div>
             <p className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2">Sales & Scheduling</p>
             <ul className="space-y-1">
@@ -147,7 +137,6 @@ export default function App() {
             </ul>
           </div>
 
-          {/* Section: Production Floor Stages */}
           <div>
             <p className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2">Production Floor</p>
             <ul className="space-y-1">
@@ -242,7 +231,6 @@ export default function App() {
             </ul>
           </div>
 
-          {/* Core Analytics, Masters & System Configurations */}
           <div>
             <p className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2">Reports & Masters</p>
             <ul className="space-y-1">
@@ -283,16 +271,12 @@ export default function App() {
           </div>
         </nav>
 
-        {/* Corporate branding footer */}
         <div className="p-3 border-t border-slate-900 text-[10px] text-slate-500 bg-slate-950 font-semibold tracking-wide">
           SYSTEM IP: 192.168.1.144
         </div>
       </aside>
 
-      {/* 2. Light Workspace (Main Canvas) */}
       <div className="flex-1 flex flex-col min-w-0">
-        
-        {/* Professional Header Section */}
         <header className="h-14 bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0 shadow-sm">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold text-slate-700 bg-slate-100 border px-2 py-0.5 rounded font-mono">
@@ -300,31 +284,23 @@ export default function App() {
             </span>
           </div>
 
-          {/* Development Mode Badging Information */}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 text-amber-800 rounded text-[10px] font-bold uppercase tracking-wider shadow-sm">
               <Shield size={12} className="text-amber-600" />
               Development Mode
             </div>
-            
             <div className="h-4 w-px bg-slate-200"></div>
-
             <div className="text-xs text-slate-500 font-semibold">
               User: <span className="text-slate-800 font-bold">Super Admin</span>
             </div>
-
             <div className="h-4 w-px bg-slate-200"></div>
-
             <div className="text-xs text-slate-500 font-semibold">
               Unit: <span className="text-indigo-600 font-bold">HT</span>
             </div>
           </div>
         </header>
 
-        {/* Main Working Panel Scrollbar */}
         <main className="flex-1 overflow-y-auto p-6 space-y-4">
-          
-          {/* Breadcrumb Structure Map */}
           <nav className="flex items-center gap-1 text-slate-400 text-xs font-semibold">
             <span>ProcessWallah</span>
             <ChevronRight size={12} />
@@ -336,7 +312,6 @@ export default function App() {
             ))}
           </nav>
 
-          {/* Active Title Header & Sync Trigger Indicator */}
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <h2 className="text-xl font-extrabold tracking-tight text-slate-800">{getPageTitle()}</h2>
             <button 
@@ -348,14 +323,12 @@ export default function App() {
             </button>
           </div>
 
-          {/* Primary View Routing Core */}
           <Views currentView={currentView} triggerToast={triggerToast} />
         </main>
       </div>
 
-      {/* Dynamic Overlay Toast Alerts */}
       {toastMessage && (
-        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 border border-slate-800 text-white text-xs py-3 px-4 rounded shadow-md flex items-center justify-between gap-4 max-w-sm transition-all animate-slide-up">
+        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 border border-slate-800 text-white text-xs py-3 px-4 rounded shadow-md flex items-center justify-between gap-4 max-w-sm">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
             <span className="font-semibold tracking-wide">{toastMessage}</span>
