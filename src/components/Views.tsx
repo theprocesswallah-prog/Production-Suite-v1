@@ -23,12 +23,12 @@ interface ViewProps {
 }
 
 export const Views: React.FC<ViewProps> = ({ currentView, triggerToast }) => {
-  // Master state management for simulation
+ // Master state management for simulation
   const [salesOrders, setSalesOrders] = useState<SalesOrder[]>(initialSalesOrders);
-  const [workOrders, setWorkOrders] = useState<WorkOrder[]>(initialWorkOrders);
+  const [workOrders] = useState<WorkOrder[]>(initialWorkOrders);
   const [materials, setMaterials] = useState<MaterialIssue[]>(initialMaterialIssues);
   const [inspections, setInspections] = useState<QCInspection[]>(initialQCInspections);
-  const [dispatches, setDispatches] = useState<DispatchStatus[]>(initialDispatches);
+  const [dispatches] = useState<DispatchStatus[]>(initialDispatches);
   
   // Search & filter states
   const [searchQuery, setSearchQuery] = useState('');
