@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react';
 import { 
   Views 
 } from './components/Views';
+import { useState, useEffect } from 'react';
+import { 
+  Views 
+} from './components/Views';
 import { 
   LayoutDashboard, ShoppingBag, Calendar, FileText, Layers, Cpu, 
   Coins, Hammer, Wrench, CheckSquare, PackageCheck, Truck, 
-  BarChart3, Database, Settings, RefreshCw, X, Shield, Layers2
+  BarChart3, Database, Settings, RefreshCw, X, Shield, Layers2,
+  ChevronRight
 } from 'lucide-react';
-
 export default function App() {
   const [currentView, setCurrentView] = useState('dashboard');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
