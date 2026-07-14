@@ -14,7 +14,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    /* Relaxed Linting to ensure 100% build success in browser mode */
+    /* Relaxed Linting rules for browser builds */
     "strict": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
