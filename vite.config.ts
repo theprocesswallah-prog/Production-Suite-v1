@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Relative paths load karne ke liye isse configure karna zaroori hai
+  base: './', // GitHub Pages par assets access karne ke liye
 })
