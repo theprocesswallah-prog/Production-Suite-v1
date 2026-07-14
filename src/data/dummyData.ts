@@ -52,7 +52,7 @@ export interface QCInspection {
   woNo: string;
   transformerSerial: string;
   testType: string;
-  insulationResistance: string; // Megger Test
+  insulationResistance: string;
   turnsRatioResult: 'Pass' | 'Fail' | 'Pending';
   voltageTestResult: 'Pass' | 'Fail' | 'Pending';
   testedBy: string;
@@ -70,7 +70,6 @@ export interface DispatchStatus {
   dispatchDate: string;
 }
 
-// Dummy initial structural data targeting electrical High Tension (HT) plant operations
 export const initialSalesOrders: SalesOrder[] = [
   { id: 'SO-001', orderNo: 'SO-2026-01', customerName: 'Apex Power Grid Corporation', product: '1000kVA Copper Core Power Transformer', capacity: '1000kVA', quantity: 4, orderDate: '2026-07-01', deliveryDate: '2026-08-15', status: 'In Production', priority: 'High' },
   { id: 'SO-002', orderNo: 'SO-2026-02', customerName: 'Indo Electrics Pvt Ltd', product: '500kVA Aluminum Core Distribution Transformer', capacity: '500kVA', quantity: 8, orderDate: '2026-07-02', deliveryDate: '2026-08-20', status: 'Scheduled', priority: 'Medium' },
