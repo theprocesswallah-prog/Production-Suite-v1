@@ -14,7 +14,7 @@ import {
 } from '../data/dummyData';
 import { 
   Search, Filter, Plus, FileText, Settings, Database, Factory, 
-  AlertTriangle, Hammer, Wrench, CheckCircle2, ShieldAlert, Truck, ChevronRight, Check, X, FileSpreadsheet
+  AlertTriangle, Hammer, CheckCircle2, FileSpreadsheet
 } from 'lucide-react';
 
 interface ViewProps {
